@@ -3,5 +3,5 @@ from .models import URLMapping
 
 
 @admin.register(URLMapping)
-class DefaultAdmin(admin.ModelAdmin):
-    pass
+class URLMappingAdmin(admin.ModelAdmin):
+    list_display = ('url', 'short_url',)
