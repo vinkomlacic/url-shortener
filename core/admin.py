@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import URLMapping
 
-# Register your models here.
+
+@admin.register(URLMapping)
+class DefaultAdmin(admin.ModelAdmin):
+    pass
