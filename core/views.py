@@ -28,6 +28,7 @@ class ShortURLList(LoginRequiredMixin, ListView):
     model = URLMapping
     template_name = 'core/short_url_list.html'
     context_object_name = 'url_mappings'
+    paginate_by = 15
 
     def get_queryset(self):
         queryset = super().get_queryset()
