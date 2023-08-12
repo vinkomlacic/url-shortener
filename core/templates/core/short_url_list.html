@@ -1,9 +1,10 @@
 {% extends 'core/base.html' %}
 {% load humanize %}
+{% load core_tags %}
 
 {% block body %}
 
-    <div class="container-fluid">
+    <div class="container mt-md-3 mt-lg-5">
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -22,7 +23,16 @@
                             <tbody>
                                 {% for url_mapping in url_mappings %}
                                     <tr>
-                                        <td>{{ url_mapping.short_url }}</td>
+                                        <td>
+                                            <span id="url-mapping-short-url-{{ url_mapping.pk }}">
+                                                {% fullurl url_mapping.short_url %}
+                                            </span>
+
+                                            <a role="button" class="copy-to-clipboard px-2"
+                                               data-source="#url-mapping-short-url-{{ url_mapping.pk }}">
+                                                <i class="bi bi-clipboard"></i>
+                                            </a>
+                                        </td>
                                         <td>{{ url_mapping.url }}</td>
                                         <td>{{ url_mapping.created|naturaltime }}</td>
                                     </tr>

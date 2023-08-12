@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView, ListView, CreateView
@@ -6,7 +7,11 @@ from .models import URLMapping
 
 
 class RedirectShortURL(RedirectView):
-    """Redirects the shortened URL to its original counterpart."""
+    """
+    Redirects the shortened URL to its original counterpart.
+
+    This is a public view.
+    """
 
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
@@ -18,7 +23,7 @@ class RedirectShortURL(RedirectView):
         return self.url_mapping.url
 
 
-class ShortURLList(ListView):
+class ShortURLList(LoginRequiredMixin, ListView):
     model = URLMapping
     template_name = 'core/short_url_list.html'
     context_object_name = 'url_mappings'
@@ -29,7 +34,7 @@ class ShortURLList(ListView):
         return queryset
 
 
-class ShortURLCreate(CreateView):
+class ShortURLCreate(LoginRequiredMixin, CreateView):
     model = URLMapping
     template_name = 'core/short_url_create.html'
     fields = ['url']
