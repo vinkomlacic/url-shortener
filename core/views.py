@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import RedirectView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import RedirectView, ListView, CreateView
 
 from .models import URLMapping
 
@@ -26,3 +27,14 @@ class ShortURLList(ListView):
         queryset = super().get_queryset()
         queryset = queryset.filter(created_by=self.request.user)
         return queryset
+
+
+class ShortURLCreate(CreateView):
+    model = URLMapping
+    template_name = 'core/short_url_create.html'
+    fields = ['url']
+    success_url = reverse_lazy('core:url_list')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)

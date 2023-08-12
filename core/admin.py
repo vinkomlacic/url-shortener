@@ -4,7 +4,7 @@ from .models import URLMapping
 
 @admin.register(URLMapping)
 class URLMappingAdmin(admin.ModelAdmin):
-    list_display = ('url', 'short_url',)
+    list_display = ('url', 'short_url', 'created', 'modified', 'created_by')
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:
