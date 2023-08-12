@@ -19,12 +19,12 @@ If you'd like a real account, please contact me at
 [vinkomlacic@outlook.com](mailto:vinkomlacic@outlook.com).
 
 
-## Development - quickstart
+## Local development quickstart
 For development purposes, there is the `docker-compose.yml` file which allows
 easy setup of the PostgreSQL database which is used by the project.
 
 1. Create the virtual environment, activate it and install all required 
-packages from `requirements.txt`: `pip install -r requirements.txt`
+packages from `requirements.txt`: `pip install -r requirements/local.txt`
 2. Create `.env` file. See `.env.example` for guidance.
 3. In the `docker` directory, run `docker-compose up`.
 4. Create the `url_shortener` DB in your PostgreSQL server and add it to the 
