@@ -10,6 +10,7 @@
 - Switched to PostgreSQL, add .env support, and improve documentation
 - Demo user support
 - Added tests
+- Add custom error views
 
 # [0.1.0] - 2023-08-12
 - Initial release. Public URL shortener. Can list and add new URLs.

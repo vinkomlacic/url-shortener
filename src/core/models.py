@@ -18,6 +18,9 @@ class URLMapping(LifecycleModelMixin, TimeStampedModel):
         related_name='url_mappings', editable=False
     )
 
+    class Meta:
+        ordering = ['-created']
+
     @hook(BEFORE_CREATE)
     def generate_short_url(self):
         charset = string.ascii_letters + string.digits

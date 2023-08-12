@@ -1,5 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.clickjacking import xframe_options_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (
     RedirectView, ListView, CreateView, UpdateView, DeleteView
 )
@@ -72,3 +74,27 @@ class ShortURLDelete(LoginRequiredMixin, ShortURLActionMixin, DeleteView):
     template_name = 'core/short_url_delete.html'
     success_msg = 'Short URL successfully deleted!'
     pk_url_kwarg = 'pk_url'
+
+
+@xframe_options_exempt
+@csrf_exempt
+def handler500(request, exception=None):
+    response = render(request, 'core/500.html', {})
+    response.status_code = 500
+    return response
+
+
+@xframe_options_exempt
+@csrf_exempt
+def handler404(request, exception):
+    response = render(request, 'core/404.html', {})
+    response.status_code = 404
+    return response
+
+
+@xframe_options_exempt
+@csrf_exempt
+def handler403(request, exception=None):
+    response = render(request, 'core/403.html', {})
+    response.status_code = 403
+    return response
