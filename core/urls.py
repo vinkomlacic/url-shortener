@@ -1,8 +1,10 @@
 from django.urls import path
 from django.views.generic import RedirectView
 
-from .views import RedirectShortURL, ShortURLList, ShortURLCreate, \
-    ShortURLUpdate
+from .views import (
+    RedirectShortURL, ShortURLList, ShortURLCreate,
+    ShortURLUpdate, ShortURLDelete
+)
 
 app_name = 'core'
 
@@ -14,6 +16,11 @@ urlpatterns = [
         'urls/<int:pk_url>/update',
         ShortURLUpdate.as_view(),
         name='url_update'
+    ),
+    path(
+        'urls/<int:pk_url>/delete',
+        ShortURLDelete.as_view(),
+        name='url_delete'
     ),
     path('<str:short_url>', RedirectShortURL.as_view(), name='redirect'),
 ]

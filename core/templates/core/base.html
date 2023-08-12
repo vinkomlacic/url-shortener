@@ -41,7 +41,7 @@
             {% for message in messages %}
                 <div class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
-                        <strong class="me-auto">{{ message.level|capfirst }}</strong>
+                        <strong class="me-auto">{{ message.level_tag|capfirst }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
 
@@ -61,6 +61,9 @@
 
         <!-- Support for clipboard -->
         <script src="{% static 'core/js/clipboard.js' %}"></script>
+
+        <!-- Initialize toasts -->
+        <script src="{% static 'core/js/toasts.js' %}"></script>
     {% endblock %}
 
 

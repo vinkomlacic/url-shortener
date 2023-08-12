@@ -54,9 +54,20 @@
                                                 </a>
                                             </td>
                                             <td>{{ url_mapping.created|naturaltime }}</td>
-                                            <td><a class="btn btn-sm btn-secondary" href="{% url 'core:url_update' url_mapping.pk %}">
-                                                <i class="bi bi-pencil"></i>
-                                            </a></td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Short URL actions">
+                                                    <a class="btn btn-sm btn-outline-secondary"
+                                                       href="{% url 'core:url_update' url_mapping.pk %}">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+
+                                                    <a class="btn btn-sm btn-outline-danger"
+                                                       href="{% url 'core:url_delete' url_mapping.pk %}">
+                                                        <i class="bi bi-trash"></i>
+                                                    </a>
+                                                </div>
+
+                                            </td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
