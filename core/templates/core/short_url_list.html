@@ -15,22 +15,26 @@
                             </div>
 
                             <div class="col-auto">
-                                <form action="" method="get">
-                                    <div class="input-group mb-3">
-                                        <input name="q" type="text" class="form-control" id="search-input"
-                                               placeholder="Search for a URL" aria-label="Search bar" aria-describedby="search-button">
-
-                                        <button id="search-button" class="btn btn-secondary px-3">
-                                            <i class="bi bi-search"></i>
-                                        </button>
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <a class="btn btn-secondary" href="{% url 'core:url_create' %}">
+                                            <i class="bi bi-plus"></i> Add
+                                        </a>
                                     </div>
-                                </form>
-                            </div>
 
-                            <div class="col-auto">
-                                <a class="btn btn-primary" href="{% url 'core:url_create' %}">
-                                    <i class="bi bi-plus"></i> Add more
-                                </a>
+                                    <div class="col-auto">
+                                        <form action="" method="get">
+                                            <div class="input-group mb-3">
+                                                <input name="q" type="text" class="form-control" id="search-input"
+                                                       placeholder="Search for a URL" aria-label="Search bar" aria-describedby="search-button">
+
+                                                <button id="search-button" class="btn btn-secondary px-3">
+                                                    <i class="bi bi-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
