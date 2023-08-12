@@ -32,6 +32,15 @@ class ShortURLList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(created_by=self.request.user)
+        queryset = self._filter_queryset_by_search_query(queryset)
+        return queryset
+
+    def _filter_queryset_by_search_query(self, queryset):
+        query = self.request.GET.get('q', None)
+        if not query:
+            return queryset
+
+        queryset = queryset.filter(url__icontains=query)
         return queryset
 
 
