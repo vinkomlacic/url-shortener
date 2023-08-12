@@ -2,15 +2,12 @@
 
 from django.conf import settings
 from django.db import migrations, models
-import django.db.models.deletion
 import django.utils.timezone
 import django_lifecycle.mixins
 import model_utils.fields
 
 
 class Migration(migrations.Migration):
-
-    replaces = [('core', '0001_initial'), ('core', '0002_alter_urlmapping_created_by')]
 
     initial = True
 
