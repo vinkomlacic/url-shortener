@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from django.views.generic import RedirectView, ListView, CreateView, UpdateView, \
-    DeleteView
+from django.views.generic import (
+    RedirectView, ListView, CreateView, UpdateView, DeleteView
+)
 
 from .models import URLMapping
+from .forms import URLMappingCreateForm
 from .viewmixins import ShortURLActionMixin
 
 
@@ -49,16 +51,19 @@ class ShortURLCreate(LoginRequiredMixin, ShortURLActionMixin, CreateView):
     model = URLMapping
     template_name = 'core/short_url_form.html'
     success_msg = 'Short URL successfully created!'
+    form_class = URLMappingCreateForm
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
 
 
 class ShortURLUpdate(LoginRequiredMixin, ShortURLActionMixin, UpdateView):
     model = URLMapping
     template_name = 'core/short_url_form.html'
     success_msg = 'Short URL successfully updated!'
+    fields = ['url']
     pk_url_kwarg = 'pk_url'
 
 
