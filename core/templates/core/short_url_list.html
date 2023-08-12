@@ -11,34 +11,57 @@
                     <div class="card-body">
                         <div class="row justify-content-between">
                             <div class="col-auto">
-                                <h5 class="card-title">URLs</h5>
+                                <h5 class="card-title">Your URLs</h5>
                             </div>
 
                             <div class="col-auto">
-                                <a class="btn btn-primary" href="{% url 'core:url_create' %}">Add more</a>
+                                <a class="btn btn-primary" href="{% url 'core:url_create' %}">
+                                    <i class="bi bi-plus"></i> Add more
+                                </a>
                             </div>
                         </div>
 
-                        <table class="table">
-                            <tbody>
-                                {% for url_mapping in url_mappings %}
+                        <div class="row mt-3">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <span id="url-mapping-short-url-{{ url_mapping.pk }}">
-                                                {% fullurl url_mapping.short_url %}
-                                            </span>
-
-                                            <a role="button" class="copy-to-clipboard px-2"
-                                               data-source="#url-mapping-short-url-{{ url_mapping.pk }}">
-                                                <i class="bi bi-clipboard"></i>
-                                            </a>
-                                        </td>
-                                        <td>{{ url_mapping.url }}</td>
-                                        <td>{{ url_mapping.created|naturaltime }}</td>
+                                        <th>Shortened URL</th>
+                                        <th>URL</th>
+                                        <th>Created</th>
+                                        <th></th>
                                     </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {% for url_mapping in url_mappings %}
+                                        <tr>
+                                            <td>
+                                                <span id="url-mapping-short-url-{{ url_mapping.pk }}">
+                                                    {% fullurl url_mapping.short_url %}
+                                                </span>
+
+                                                <a role="button" class="copy-to-clipboard px-2"
+                                                   data-source="#url-mapping-short-url-{{ url_mapping.pk }}">
+                                                    <i class="bi bi-clipboard"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span>{{ url_mapping.url|truncatechars:50 }}</span>
+                                                <!-- The hidden one is used only for copying to clipboard -->
+                                                <span id="url-mapping-url-{{ url_mapping.pk }}" class="d-none">{{ url_mapping.url }}</span>
+
+                                                <a role="button" class="copy-to-clipboard px-2" data-source="#url-mapping-url-{{ url_mapping.pk }}">
+                                                    <i class="bi bi-clipboard"></i>
+                                                </a>
+                                            </td>
+                                            <td>{{ url_mapping.created|naturaltime }}</td>
+                                            <td><a class="btn btn-sm btn-secondary" href="{% url 'core:url_update' url_mapping.pk %}">
+                                                <i class="bi bi-pencil"></i>
+                                            </a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
