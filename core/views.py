@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from django.urls import reverse_lazy
-from django.views.generic import RedirectView, ListView, CreateView
+from django.views.generic import RedirectView, ListView, CreateView, UpdateView, \
+    DeleteView
 
 from .models import URLMapping
+from .viewmixins import ShortURLActionMixin
 
 
 class RedirectShortURL(RedirectView):
@@ -27,19 +28,42 @@ class ShortURLList(LoginRequiredMixin, ListView):
     model = URLMapping
     template_name = 'core/short_url_list.html'
     context_object_name = 'url_mappings'
+    paginate_by = 15
 
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(created_by=self.request.user)
+        queryset = self._filter_queryset_by_search_query(queryset)
+        return queryset
+
+    def _filter_queryset_by_search_query(self, queryset):
+        query = self.request.GET.get('q', None)
+        if not query:
+            return queryset
+
+        queryset = queryset.filter(url__icontains=query)
         return queryset
 
 
-class ShortURLCreate(LoginRequiredMixin, CreateView):
+class ShortURLCreate(LoginRequiredMixin, ShortURLActionMixin, CreateView):
     model = URLMapping
-    template_name = 'core/short_url_create.html'
-    fields = ['url']
-    success_url = reverse_lazy('core:url_list')
+    template_name = 'core/short_url_form.html'
+    success_msg = 'Short URL successfully created!'
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+
+
+class ShortURLUpdate(LoginRequiredMixin, ShortURLActionMixin, UpdateView):
+    model = URLMapping
+    template_name = 'core/short_url_form.html'
+    success_msg = 'Short URL successfully updated!'
+    pk_url_kwarg = 'pk_url'
+
+
+class ShortURLDelete(LoginRequiredMixin, ShortURLActionMixin, DeleteView):
+    model = URLMapping
+    template_name = 'core/short_url_delete.html'
+    success_msg = 'Short URL successfully deleted!'
+    pk_url_kwarg = 'pk_url'

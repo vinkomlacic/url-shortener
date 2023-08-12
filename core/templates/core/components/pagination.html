@@ -1,0 +1,45 @@
+{% load core_filters %}
+
+{% if is_paginated and page_obj.has_other_pages %}
+    <div class="text-center">
+        <div class="btn-group">
+            {% if page_obj.has_previous %}
+                <a class="btn btn-white" type="button" href="?page={{ page_obj.previous_page_number }}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            {% endif %}
+
+            {% if paginator.num_pages < 10 %}
+                {% for page_number in paginator.page_range %}
+                    {% if page_number == page_obj.number %}
+                        {# This is the current page #}
+                        <a class="btn btn-white active" type="button" href="#">{{ page_number }}</a>
+
+                    {% else %}
+                        <a class="btn btn-white" type="button" href="?page={{ page_number }}">{{ page_number }}</a>
+                    {% endif %}
+                {% endfor %}
+
+            {% else %}
+                {% for page_number in paginator|elided_page_range:page_obj.number %}
+                    {% if page_number == page_obj.number %}
+                        {# This is the current page #}
+                        <a class="btn btn-white active" type="button" href="#">{{ page_number }}</a>
+
+                    {% elif page_number == paginator.ELLIPSIS %}
+                        <a class="btn btn-white" type="button">{{ paginator.ELLIPSIS }}</a>
+
+                    {% else %}
+                        <a class="btn btn-white" type="button" href="?page={{ page_number }}">{{ page_number }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-white" type="button" href="?page={{ page_obj.next_page_number }}">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
