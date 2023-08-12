@@ -141,3 +141,9 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 # django-crispy-forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+################################################################################
+#                     Project settings                                         #
+################################################################################
+URL_SHORTENER_DEMO_ACCOUNT_MAX_URLS = 1000

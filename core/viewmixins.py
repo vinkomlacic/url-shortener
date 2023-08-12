@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 
 
 class ShortURLActionMixin:
-    fields = ['url']
     success_url = reverse_lazy('core:url_list')
     context_object_name = 'url_mapping'
 
