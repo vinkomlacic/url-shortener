@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block body %}
+    <div class="container animated fadeInDown text-center mt-5">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <h1>404</h1>
+                <h3 class="font-bold">Page Not Found</h3>
+
+                <div class="error-desc">
+                    Sorry, but the page you are looking for has not been found. Try checking the URL for error, then hit
+                    the refresh button on your browser or go back to the main page.
+                    <br><a href="{% url 'core:home' %}" class="btn btn-primary m-t">Home page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

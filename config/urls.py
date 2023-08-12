@@ -23,3 +23,9 @@ urlpatterns = [
     path('', include('core.urls')),
     path('accounts/', include('accounts.urls')),
 ]
+
+
+# Error handling
+handler500 = 'core.views.handler500'
+handler404 = 'core.views.handler404'
+handler403 = 'core.views.handler403'
