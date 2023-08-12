@@ -1,14 +1,15 @@
 # Changelog
 
 # [next] - unreleased
-- Add authentication - login page, protected views, logout
-- Add full CRUDLS interface
+- Added authentication - login page, protected views, logout
+- Added full CRUDLS interface
   - Update shortened URL
   - Delete shortened URL
   - Search for URLs
   - Pagination
-- Switch to PostgreSQL, add .env support, and improve documentation
+- Switched to PostgreSQL, add .env support, and improve documentation
 - Demo user support
+- Added tests
 
 # [0.1.0] - 2023-08-12
 - Initial release. Public URL shortener. Can list and add new URLs.

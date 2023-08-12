@@ -22,5 +22,8 @@ urlpatterns = [
         ShortURLDelete.as_view(),
         name='url_delete'
     ),
+
+    # NOTE: keep this last so the views above override it for certain values.
+    # Otherwise, this URL would shadow all of them.
     path('<str:short_url>', RedirectShortURL.as_view(), name='redirect'),
 ]

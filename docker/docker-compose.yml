@@ -6,7 +6,7 @@ services:
     container_name: url_shortener_db
     image: postgres:12
     env_file:
-      - ../.env
+      - ../config/.env
     volumes:
       - db_volume_12:/var/lib/postgresql/data
     ports:
