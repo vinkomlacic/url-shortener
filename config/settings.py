@@ -22,7 +22,7 @@ BASE_DIR = environ.Path(__file__) - 2
 # reads .env and sets the variables in the environment variables
 # IMPORTANT: environment variables take precedence unless overwrite=True is
 # specified.
-environ.Env.read_env(BASE_DIR('.env'))
+environ.Env.read_env(BASE_DIR('config/.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
@@ -62,13 +62,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'url_shortener.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR('templates')]
-        ,
+        'DIRS': [BASE_DIR('src/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'url_shortener.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
