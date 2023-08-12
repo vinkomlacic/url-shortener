@@ -25,9 +25,10 @@ easy setup of the PostgreSQL database which is used by the project.
 
 1. Create the virtual environment, activate it and install all required 
 packages from `requirements.txt`: `pip install -r requirements.txt`
-2. In the `docker` directory, run `docker-compose up`.
-3. Create the `url_shortener` DB in your PostgreSQL server and add it to the 
+2. Create `.env` file. See `.env.example` for guidance.
+3. In the `docker` directory, run `docker-compose up`.
+4. Create the `url_shortener` DB in your PostgreSQL server and add it to the 
 `DATABASE_URL` environment variable.
-4. Run the migrations: `python manage.py migrate`
-5. Start the server
+5. Run the migrations: `python manage.py migrate`
+6. Start the server
  
