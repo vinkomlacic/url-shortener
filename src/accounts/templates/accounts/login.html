@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block body %}
 
@@ -7,20 +8,10 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post">
-                            {% csrf_token %}
+                        <form id="login-form" action="" method="post">
+                            {% crispy form %}
 
-                            <div class="mb-3">
-                                <label for="username-input" class="form-label">Username</label>
-                                <input name="username" type="text" class="form-control" id="username-input">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password-input" class="form-label">Password</label>
-                                <input name="password" type="password" class="form-control" id="password-input">
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary" form="login-form">Login</button>
                         </form>
                     </div>
                 </div>
