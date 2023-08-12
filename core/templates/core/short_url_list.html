@@ -23,7 +23,16 @@
                             <tbody>
                                 {% for url_mapping in url_mappings %}
                                     <tr>
-                                        <td>{% fullurl url_mapping.short_url %}</td>
+                                        <td>
+                                            <span id="url-mapping-short-url-{{ url_mapping.pk }}">
+                                                {% fullurl url_mapping.short_url %}
+                                            </span>
+
+                                            <a role="button" class="copy-to-clipboard px-2"
+                                               data-source="#url-mapping-short-url-{{ url_mapping.pk }}">
+                                                <i class="bi bi-clipboard"></i>
+                                            </a>
+                                        </td>
                                         <td>{{ url_mapping.url }}</td>
                                         <td>{{ url_mapping.created|naturaltime }}</td>
                                     </tr>

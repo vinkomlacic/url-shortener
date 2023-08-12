@@ -2,7 +2,6 @@ import random
 import string
 
 from django.conf import settings
-from django.contrib.sites.models import Site
 from django.db import models
 from django_lifecycle import (
     LifecycleModel, hook, BEFORE_CREATE, LifecycleModelMixin
