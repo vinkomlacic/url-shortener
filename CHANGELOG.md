@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.6] - 2023-08-13
+- Add support for CSRF in the production environment
+
 # [0.2.5] - 2023-08-13
 - Rename allowed hosts environment variable
 
