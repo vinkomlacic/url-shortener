@@ -45,8 +45,9 @@ jobs:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
-        coverage run manage.py test src
-        coverage json
+        mkdir .coverage
+        coverage run --data-file .coverage/.coverage manage.py test src
+        coverage json --data-file .coverage/.coverage -o .coverage/coverage-summary.json
 
     - name: Update Coverage Badge
       # GitHub actions: default branch variable
