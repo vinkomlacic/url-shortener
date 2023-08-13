@@ -131,6 +131,15 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-httponly
+SESSION_COOKIE_HTTPONLY = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-httponly
+CSRF_COOKIE_HTTPONLY = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
+X_FRAME_OPTIONS = "DENY"
+# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-trusted-origins
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+
 # Custom Auth settings
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = 'accounts:login'
