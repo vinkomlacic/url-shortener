@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.1] - 2023-08-13
+- Added coverage and version badges to the README
+
 # [0.2.0] - 2023-08-13
 - Added authentication - login page, protected views, logout
 - Added full CRUDLS interface
