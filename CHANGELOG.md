@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.7] - 2023-08-13
+- Separate static files by application name
+
 # [0.2.6] - 2023-08-13
 - Add support for CSRF in the production environment
 
