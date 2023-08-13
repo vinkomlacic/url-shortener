@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.2] - 2023-08-13
+- Added missing settings
+
 # [0.2.1] - 2023-08-13
 - Added coverage and version badges to the README
 
