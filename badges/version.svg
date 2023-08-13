@@ -1,20 +1,20 @@
-<svg width="160.3" height="20" viewBox="0 0 1603 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="version: 0.2.0-6-gd9aaaba">
-  <title>version: 0.2.0-6-gd9aaaba</title>
-  <linearGradient id="ZdGGd" x2="0" y2="100%">
+<svg width="89.2" height="20" viewBox="0 0 892 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="version: 0.2.1">
+  <title>version: 0.2.1</title>
+  <linearGradient id="ApGSP" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="Qkjwh"><rect width="1603" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#Qkjwh)">
+  <mask id="qwpWy"><rect width="892" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#qwpWy)">
     <rect width="502" height="200" fill="#555"/>
-    <rect width="1101" height="200" fill="#08C" x="502"/>
-    <rect width="1603" height="200" fill="url(#ZdGGd)"/>
+    <rect width="390" height="200" fill="#08C" x="502"/>
+    <rect width="892" height="200" fill="url(#ApGSP)"/>
   </g>
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="60" y="148" textLength="402" fill="#000" opacity="0.25">version</text>
     <text x="50" y="138" textLength="402">version</text>
-    <text x="557" y="148" textLength="1001" fill="#000" opacity="0.25">0.2.0-6-gd9aaaba</text>
-    <text x="547" y="138" textLength="1001">0.2.0-6-gd9aaaba</text>
+    <text x="557" y="148" textLength="290" fill="#000" opacity="0.25">0.2.1</text>
+    <text x="547" y="138" textLength="290">0.2.1</text>
   </g>
   
 </svg>
