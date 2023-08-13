@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="login-form" action="" method="post">
+                            {% crispy form %}
+
+                            <button type="submit" class="btn btn-primary" form="login-form">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
