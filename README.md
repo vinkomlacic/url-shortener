@@ -1,5 +1,7 @@
 # URL Shortener
 
++ [![cov](https://vinkomlacic.github.io/url_shortener/badges/coverage.svg)](https://github.com/vinkomlacic/url_shortener/actions)
+
 A simple private URL shortener.
 
 For authenticated users, allows creation and management of shortened URLs. The
