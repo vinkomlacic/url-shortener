@@ -1,4 +1,4 @@
-name: URL Shortener
+name: url-shortener-test
 
 on:
   push:
@@ -46,3 +46,10 @@ jobs:
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
         coverage run manage.py test src
+        coverage json
+
+    - name: Update badges
+      # GitHub actions: default branch variable
+      # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
+      if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      uses: ./.github/actions/generate-badges

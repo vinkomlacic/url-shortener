@@ -1,0 +1,57 @@
+name: Generate Badges
+description: Badges for code coverage and latest build version of project
+
+# Required for publishing to the marketplace:
+# Improve your Action by adding labels for icon and color.
+branding:
+  icon: check-circle
+  color: green
+
+# The following steps are taken from
+# https://github.com/we-cli/coverage-badge-action and adapted to support
+# coverage from Python coverage package.
+runs:
+  using: composite
+  steps:
+    - name: Get Values
+      id: get-values
+      shell: bash
+      run: |
+        COV=$(node -p 't=require(`./coverage.json`).totals.percent_covered_display')
+        echo "coverage=$COV" >> $GITHUB_OUTPUT
+        VERSION=$(git describe)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Checkout gh-pages
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages
+
+    - name: Create Badges
+      shell: bash
+      run: |
+        npm i -g badgen-cli
+        export COV=${{ steps.get-values.outputs.coverage }}
+        COLOR=$(node -p '+process.env.COV >= 95 ? `green` : `orange`')
+        mkdir -p badges
+        badgen -j coverage -s $COV% -c $COLOR > badges/coverage.svg
+        
+        export VERSION=${{ steps.get-values.outputs.version }}
+        badgen -j version -s $VERSION -c blue > badges/version.svg
+
+    - name: Deploy Badges
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update badges [skip ci]"
+        # TODO: check if this is necessary
+        # branch: gh-pages
+        skip_fetch: true
+        skip_checkout: true
+
+    # Without this, will get Error:
+    # Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/coverage-badge-action/coverage-badge-action/action.yml'.
+    # Did you forget to run actions/checkout before running your local action?
+    - name: Checkout Back
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref }}

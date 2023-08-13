@@ -1,4 +1,5 @@
 # URL Shortener
+[![cov](https://vinkomlacic.github.io/url-shortener/badges/coverage.svg)](https://github.com/vinkomlacic/url-shortener/actions) [![version](https://vinkomlacic.github.io/url-shortener/badges/version.svg)](https://github.com/vinkomlacic/url-shortener/actions)
 
 A simple private URL shortener.
 
