@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.3] - 2023-08-13
+- Added missing gunicorn dependency to production requirements
+
 # [0.2.2] - 2023-08-13
 - Added missing settings
 
