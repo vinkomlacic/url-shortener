@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.5] - 2023-08-13
+- Rename allowed hosts environment variable
+
 # [0.2.4] - 2023-08-13
 - Pin gunicorn version
 
