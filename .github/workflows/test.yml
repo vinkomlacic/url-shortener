@@ -21,10 +21,9 @@ jobs:
           - "5432:5432"
         volumes:
           - db_volume_12:/var/lib/postgresql/data
-        environment:
-          POSTGRES_HOST_AUTH_METHOD: trust
         env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_HOST_AUTH_METHOD: trust
 
     volumes:
       db_volume_12:
