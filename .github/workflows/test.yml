@@ -16,9 +16,23 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:12
+        ports:
+          - "5432:5432"
+        volumes:
+          - db_volume_12:/var/lib/postgresql/data
+        environment:
+          POSTGRES_HOST_AUTH_METHOD: trust
         env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
+    volumes:
+      db_volume_12:
+        external: true
+
+    networks:
+      default:
+        driver: bridge
 
     steps:
     - uses: actions/checkout@v1
