@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.8] - 2023-08-15
+- Conform to newly defined staticfiles architecture
+
 # [0.2.7] - 2023-08-13
 - Separate static files by application name
 
