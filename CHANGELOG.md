@@ -2,6 +2,9 @@
 
 # [next] - unreleased
 
+# [0.2.9] - 2023-08-15
+- Fix typo in STATIC_URL
+
 # [0.2.8] - 2023-08-15
 - Conform to newly defined staticfiles architecture
 
